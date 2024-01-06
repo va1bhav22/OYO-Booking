@@ -1,4 +1,12 @@
-export const navMenu = [
+import { lazy } from "react";
+const IndexPage = lazy(() => import("../pages"));
+
+export const navMenu: navMenusProps[] = [
+  {
+    id: 11,
+    title: "",
+    path: "",
+  },
   {
     id: 1,
     title: "Bangalore",
@@ -164,7 +172,73 @@ export const navMenu = [
   },
   {
     id: 10,
-    title: "",
+    title: "All Cities ",
     path: "",
+  },
+];
+
+export const newNavMenues: navMenusProps[] = [
+  { id: 1, title: "Home", path: "/", element: <IndexPage /> },
+
+  { id: 2, title: "Bangalore", path: "/hotel-in-bangalore", element: "" },
+  {
+    id: 3,
+    title: "Chennai",
+    path: "/hotel-in-chennai",
+    element: "",
+  },
+  {
+    id: 4,
+    title: "Delhi",
+    path: "/hotel-in-delhi",
+    element: "",
+  },
+  {
+    id: 5,
+    title: "Delhi",
+    path: "/hotel-in-delhi",
+    element: "",
+  },
+  {
+    id: 6,
+    title: "Gurgaon",
+    path: "/hotel-in-gurgaon",
+    element: "",
+  },
+  {
+    id: 7,
+    title: "Hyderabad",
+    path: "/hotel-in-hyderabad",
+    element: "",
+  },
+  {
+    id: 8,
+    title: "Kolkata",
+    path: "/hotel-in-kolkata",
+    element: "",
+  },
+  {
+    id: 9,
+    title: "Mumbai",
+    path: "/hotel-in-mumbai",
+    element: "",
+  },
+  {
+    id: 10,
+    title: "Noida",
+    path: "/hotel-in-noida",
+    element: "",
+  },
+  {
+    id: 11,
+    title: "Pune",
+    path: "/hotel-in-pune",
+    element: "",
+  },
+  {
+    id: 12,
+    title: "All Cities",
+    path: "/all-cities",
+    element: "",
   },
 ];
