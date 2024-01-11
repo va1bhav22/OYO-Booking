@@ -51,6 +51,7 @@ module.exports = {
         whatsapp: "#25d366",
         youtube: "#cd201f",
         panel: "#13AF82",
+        mainColor:"#db243f",
       },
       fontSize: {
         small: "15px",
