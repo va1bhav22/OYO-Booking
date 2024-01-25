@@ -1,6 +1,9 @@
 import { useState } from "react";
 import Icons from "../../assets/icons";
 import { midMenuList } from "../../hooks/Navmenu";
+import { IoCaretDownOutline } from "react-icons/io5";
+import { FaCheck } from "react-icons/fa6";
+import { FiUser } from "react-icons/fi";
 const languageArray = [
   {
     id: 1,
@@ -24,7 +27,7 @@ const languageArray = [
   },
 ];
 const InfoNav = () => {
-  const [selectLangauge, setSelectLanguage] = useState<string>("English");
+  const [selectLanguage, setSelectLanguage] = useState<string>("English");
   const [openLang, setOpenLang] = useState(false);
   return (
     <div className="bg-white public-container grid grid-cols-12 items-center">
@@ -40,23 +43,43 @@ const InfoNav = () => {
           </div>
         ))}
       </div>
-      <div className="border col-span-2 py-7">
-        <div className="">
-          <Icons.World />
+      <div onClick={() => setOpenLang(!openLang)} className=" col-span-2 py-7">
+        <div className="flex justify-center items-center gap-2 cursor-pointer">
+          <div className="text-3xl">
+            <Icons.World />
+          </div>
+          <p className="text-sm font-semibold"> {selectLanguage}</p>
+          <IoCaretDownOutline />
         </div>
         {openLang && (
-          <div>
+          <div className="absolute bg-white shadow-lg border rounded-tr-lg rounded-b-xl bottom-[-7.3rem] px-4 py-3 z-10 grid grid-cols-2 cursor-pointer">
             {languageArray?.map((lang) => (
-              <div>
-                <div></div>
-                <p>{lang?.title}</p>
-                <p>{lang?.minLanguage}</p>
+              <div
+                onClick={() => setSelectLanguage(lang?.title)}
+                className="flex items-center gap-2 p-3 hover:bg-slate-200/50"
+              >
+                <div
+                  className={`text-xl ${
+                    lang?.title === selectLanguage ? "text-green-400" : ""
+                  }`}
+                >
+                  <FaCheck />
+                </div>
+                <div>
+                  <p>{lang?.title}</p>
+                  <p className=" text-xs">{lang?.minLanguage}</p>
+                </div>
               </div>
             ))}
           </div>
         )}
       </div>
-      <div className="border col-span-2 py-6"></div>
+      <div className=" col-span-2 py-6 flex justify-center gap-2 items-center cursor-pointer">
+        <div className="text-lg h-7 w-7 flex items-center justify-center  rounded-full bg-slate-200 box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;">
+          <FiUser />
+        </div>
+        <p className="text-sm font-semibold">Login / SignUp</p>
+      </div>
     </div>
   );
 };
