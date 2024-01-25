@@ -17,8 +17,8 @@ const Navbar = () => {
   return (
     <section className=" sticky top-0 w-full">
       <InfoNav />
-      <div className="bg-[#f3f5f7]">
-        <div className="public-container flex justify-between  ">
+      <div className="bg-[#f3f5f7] w-full ">
+        <div className="flex justify-between public-container  ">
           {newNavMenues?.map((menu, index: number) => (
             <div
               key={menu.id}
@@ -31,7 +31,7 @@ const Navbar = () => {
                   <div
                     className={`text-sm text-gray-700 flex gap-1 items-center  px-3 py-2 transition-all duration-300 ease-in ${
                       hoveredMenu === menu.id ? "group-hover:bg-[#fffefe] " : ""
-                    }`}
+                    } `}
                   >
                     {menu.title}
                     <HiChevronDown

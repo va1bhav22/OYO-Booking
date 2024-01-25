@@ -1,6 +1,4 @@
-import { lazy } from "react";
 import Icons from "../assets/icons";
-const IndexPage = lazy(() => import("../pages"));
 
 interface midMenuListTypes {
   id?: number;
@@ -10,7 +8,6 @@ interface midMenuListTypes {
 }
 
 export const newNavMenues: navMenusProps[] = [
-  { id: 1, path: "/", element: <IndexPage /> },
   {
     id: 2,
     title: "Bangalore",
@@ -211,18 +208,18 @@ export const midMenuList: midMenuListTypes[] = [
     id: 1,
     title: "OYO for Business",
     minTitle: "Trusted by 5000 Corporates",
-    icon: <Icons.hotel />,
+    icon: <Icons.Bag />,
   },
   {
     id: 1,
     title: "List your property",
     minTitle: "Start earning in 30 mins",
-    icon: <Icons.call />,
+    icon: <Icons.Hotel />,
   },
   {
     id: 1,
     title: "0124-6201611",
     minTitle: "Call us to Book now",
-    icon: <Icons.world />,
+    icon: <Icons.Call />,
   },
 ];
