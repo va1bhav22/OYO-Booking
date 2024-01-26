@@ -15,7 +15,7 @@ const Navbar = () => {
   };
 
   return (
-    <section className=" sticky top-0 w-full">
+    <section className=" sticky top-0 w-full z-10">
       <InfoNav />
       <div className="bg-[#f3f5f7] w-full ">
         <div className="flex justify-between public-container  ">
