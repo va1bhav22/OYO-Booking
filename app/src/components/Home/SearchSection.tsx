@@ -124,7 +124,7 @@ const SearchSection = () => {
               defaultValue={[currentDate, tomorrowDate]}
               renderExtraFooter={() => ""}
               className="ant-picker"
-              onChange={handleDateRangeChange}
+              // onChange={handleDateRangeChange}
             />
           </Space>
         </div>

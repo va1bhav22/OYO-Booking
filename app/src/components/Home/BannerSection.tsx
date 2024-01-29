@@ -19,14 +19,14 @@ const BannerSection = () => {
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <fieldset className="border rounded-sm pb-2 pt-1 px-3 ">
-            <legend className="text-xs font-medium text-gray-400 px-1 ">
+          <fieldset className="border border-gray-400 rounded-sm pb-2 pt-1 px-3 ">
+            <legend className="text-xs font-medium text-gray-500 px-1 ">
               Your email
             </legend>
             <input
               type="text"
               placeholder="e.g, john@email.com"
-              className="border-none outline-none py-1"
+              className="border-none outline-none py-1 w-[300px]"
             />
           </fieldset>
           <button className="bg-[#ee2a24] w-full text-sm h-[50px]  px-8 rounded-lg text-white font-semibold">
