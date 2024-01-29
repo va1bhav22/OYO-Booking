@@ -2,7 +2,7 @@ import React from "react";
 
 const RecentSearch = () => {
   return (
-    <div className="w-full flex justify-center items-center">
+    <div className="w-full flex gap-6 justify-center items-center">
       <p className="text-white text-lg  font-semibold">continue Your Search</p>
       <div className="flex gap-4 ">
         {recentSearchData?.map((item) => (

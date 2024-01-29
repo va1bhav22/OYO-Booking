@@ -4,9 +4,10 @@ import { useState } from "react";
 import { FiMinus } from "react-icons/fi";
 import { GoPlus } from "react-icons/go";
 import { IoLocateOutline } from "react-icons/io5";
-import { homeHeader } from "../../images";
 import RecentSearch from "./RecentSearch";
+import { homeHeader } from "../../images";
 const SearchSection = () => {
+  console.log(homeHeader);
   const [placeholder, setPlaceholder] = useState("Around Me");
   const [rooms, setRooms] = useState<number>(1);
   const [roomToggle, setRoomToggle] = useState<boolean>(false);
