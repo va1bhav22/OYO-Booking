@@ -5,13 +5,23 @@ import { FiMinus } from "react-icons/fi";
 import { GoPlus } from "react-icons/go";
 import { IoLocateOutline } from "react-icons/io5";
 import { homeHeader } from "../../images";
+import RecentSearch from "./RecentSearch";
 const SearchSection = () => {
   const [placeholder, setPlaceholder] = useState("Around Me");
   const [rooms, setRooms] = useState<number>(1);
   const [roomToggle, setRoomToggle] = useState<boolean>(false);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
   const { RangePicker } = DatePicker;
   const currentDate = dayjs();
   const tomorrowDate = currentDate.add(1, "day");
+  const [roomDetails, setRoomDetails] = useState([
+    {
+      id: 1,
+      guests: 1,
+    },
+  ]);
+
   const handlePlaceholder = () => {
     setPlaceholder("Search by city,hotel,or neighbor");
   };
@@ -19,12 +29,13 @@ const SearchSection = () => {
     setPlaceholder("Around Me");
   };
 
-  const [roomDetails, setRoomDetails] = useState([
-    {
-      id: 1,
-      guests: 1,
-    },
-  ]);
+  const handleDateRangeChange = (dates: any) => {
+    const [start, end] = dates;
+    setStartDate(start);
+    setEndDate(end);
+    console.log("Start date:", start);
+    console.log("End date:", end);
+  };
 
   const handlePluse = (roomId: number) => {
     const updatedRooms = roomDetails.map((room) =>
@@ -58,7 +69,6 @@ const SearchSection = () => {
       ]);
     }
   };
-
   const handleDeleteRoom = () => {
     if (rooms > 1) {
       setRooms((prevRooms) => prevRooms - 1);
@@ -72,9 +82,11 @@ const SearchSection = () => {
     return roomDetails.reduce((total, room) => total + room.guests, 0);
   };
 
+  const handleSearch = () => {};
+
   return (
     <div
-      className=" h-[250px] w-full border flex items-center justify-center"
+      className=" h-[280px] w-full border flex flex-col items-center justify-center gap-6"
       style={{
         backgroundImage: `url('${homeHeader}')`,
         backgroundSize: "cover",
@@ -82,6 +94,9 @@ const SearchSection = () => {
         backgroundRepeat: "no-repeat",
       }}
     >
+      <h1 className="font-bold text-3xl text-white">
+        Over 174,000+ hotels and homes across 35+ countries
+      </h1>
       <div className="  grid grid-cols-12  items-center bg-white w-[80%]  ">
         <div className="relative col-span-4 h-full border-r border-gray-400 ">
           <input
@@ -108,6 +123,7 @@ const SearchSection = () => {
               defaultValue={[currentDate, tomorrowDate]}
               renderExtraFooter={() => ""}
               className="ant-picker"
+              onChange={handleDateRangeChange}
             />
           </Space>
         </div>
@@ -163,9 +179,15 @@ const SearchSection = () => {
           </div>
         )}
 
-        <div className="py-5 bg-[#1ab64f] text-lg cursor-pointer font-bold text-white hover:bg-green-700 transition-all duration-300 ease-out col-span-2 h-full text-center ">
+        <div
+          onClick={() => handleSearch()}
+          className="py-5 bg-[#1ab64f] text-lg cursor-pointer font-bold text-white hover:bg-green-700 transition-all duration-300 ease-out col-span-2 h-full text-center "
+        >
           Search
         </div>
+      </div>
+      <div className="w-full">
+        <RecentSearch />
       </div>
     </div>
   );
