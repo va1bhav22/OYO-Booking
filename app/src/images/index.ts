@@ -1,7 +1,7 @@
 export { default as homeHeader } from "./homeHeader.jpg";
 
-export { default as appleStore } from "./applestore.png";
-export { default as playStore } from "./playstore.png";
+export { default as appleStore } from "./applelogo.png";
+export { default as playStore } from "./playstorelogo.webp";
 
 export { default as banner1 } from "./banner1.jpg";
 export { default as banner2 } from "./banner2.jpg";

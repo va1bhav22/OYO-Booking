@@ -5,6 +5,7 @@ import ErrorBoundary from "./hooks/ErrorBoundary";
 import { Provider } from "react-redux";
 import { lazy } from "react";
 import store from "./Redux/store";
+import Detail from "./pages/detail";
 const IndexPage = lazy(() => import("./pages"));
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<IndexPage />} />
+              <Route path="/detail/:id" element={<Detail />} />
               {newNavMenues?.map((menu) => (
                 <Route key={menu.id} path={menu.path} element={menu.element} />
               ))}
