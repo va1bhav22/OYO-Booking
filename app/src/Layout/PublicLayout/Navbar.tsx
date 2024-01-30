@@ -4,8 +4,10 @@ import { HiChevronDown } from "react-icons/hi2";
 import { useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import InfoNav from "./InfoNav";
+import useScrollPosition from "../../hooks/useScrollPosition ";
 const Navbar = () => {
   const [hoveredMenu, setHoveredMenu] = useState<number | null>(null);
+  const scrollPosition = useScrollPosition();
   const handleMenuHover = (menuId: number) => {
     setHoveredMenu(menuId);
   };
@@ -13,9 +15,14 @@ const Navbar = () => {
   const handleMenuLeave = () => {
     setHoveredMenu(null);
   };
+  console.log("scrollPosition--", scrollPosition);
 
   return (
-    <section className=" sticky top-0 w-full z-10">
+    <section
+      className={`sticky top-0 w-full z-10 border-2 border-red-500 ${
+        scrollPosition > 10 ? "hidden" : "block"
+      } `}
+    >
       <InfoNav />
       <div className="bg-[#f3f5f7] w-full ">
         <div className="flex justify-between public-container  ">
