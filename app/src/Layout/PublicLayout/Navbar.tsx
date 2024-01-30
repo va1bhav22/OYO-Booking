@@ -4,8 +4,10 @@ import { HiChevronDown } from "react-icons/hi2";
 import { useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import InfoNav from "./InfoNav";
+import useScrollPosition from "../../hooks/useScrollPosition ";
 const Navbar = () => {
   const [hoveredMenu, setHoveredMenu] = useState<number | null>(null);
+  const scrollPosition = useScrollPosition();
   const handleMenuHover = (menuId: number) => {
     setHoveredMenu(menuId);
   };
