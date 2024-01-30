@@ -15,9 +15,14 @@ const Navbar = () => {
   const handleMenuLeave = () => {
     setHoveredMenu(null);
   };
+  console.log("scrollPosition--", scrollPosition);
 
   return (
-    <section className=" sticky top-0 w-full z-10">
+    <section
+      className={`sticky top-0 w-full z-10 border-2 border-red-500 ${
+        scrollPosition > 10 ? "hidden" : "block"
+      } `}
+    >
       <InfoNav />
       <div className="bg-[#f3f5f7] w-full ">
         <div className="flex justify-between public-container  ">
