@@ -1,5 +1,9 @@
 import { PublicLayout } from "../Layout";
-import { BannerSection, SearchSection } from "../components/Home";
+import {
+  BannerSection,
+  CountryBranches,
+  SearchSection,
+} from "../components/Home";
 
 const IndexPage = () => {
   return (
@@ -7,6 +11,7 @@ const IndexPage = () => {
       <section>
         <SearchSection />
         <BannerSection />
+        <CountryBranches />
       </section>
     </PublicLayout>
   );
