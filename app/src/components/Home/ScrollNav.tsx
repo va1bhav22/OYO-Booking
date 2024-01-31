@@ -9,6 +9,7 @@ import { homeHeader } from "../../images";
 import React from "react";
 import { FaCheck } from "react-icons/fa6";
 import Icons from "../../assets/icons";
+import { RiSunLine } from "react-icons/ri";
 
 const languageArray = [
   {
