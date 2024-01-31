@@ -5,6 +5,7 @@ import { useState } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import InfoNav from "./InfoNav";
 import useScrollPosition from "../../hooks/useScrollPosition ";
+import ScrollNav from "../../components/Home/ScrollNav";
 const Navbar = () => {
   const [hoveredMenu, setHoveredMenu] = useState<number | null>(null);
   const scrollPosition = useScrollPosition();
@@ -20,16 +21,15 @@ const Navbar = () => {
     <section className={`  w-full  `}>
       <div
         className={`${
-          scrollPosition < 300 ? "h-0" : "h-20"
+          scrollPosition < 300 ? "h-0" : "h-[4.3rem] shadow-md p-1"
         } fixed bg-white w-full z-10 transition-all duration-300 ease-in-out `}
       >
         <div
           className={`${
             scrollPosition < 300 ? "hidden" : "block"
-          } transition-all duration-300 ease-in-out`}
+          } transition-all duration-300 ease-in-out  `}
         >
-          <p>1hiudh</p>
-          <p>1hiudh</p>
+          <ScrollNav />
         </div>
       </div>
       <div className={`sticky bg-white z-10`}>
