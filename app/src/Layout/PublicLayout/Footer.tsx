@@ -134,46 +134,48 @@ const HotelList6 = [
 
 const Footer = () => {
   return (
-    <section className="bg-gray-400 w-full py-5  ">
-      <section className=" public-container">
-        <div className="flex justify-between items-center w-full ">
-          <div className="flex gap-4 items-center text-white ">
-            <h1 className=" text-4xl font-extrabold ">OYO</h1>
-            <p className="text-2xl font-bold">
-              World's leading chain of hotels and homes
-            </p>
-          </div>
-          <div className="flex items-center  gap-4">
-            <p className="text-2xl font-bold text-white">
-              Join our network and grow your business!
-            </p>
-            <p className=" bg-white rounded-md shadow-md text-sm font-semibold py-4 px-5 flex items-center text-gray-500">
-              <HiOutlineBuildingOffice2 />
-              <span className="px-2"> List your property</span>
-            </p>
-          </div>
+    <section className=" bg-[#6d787d] w-full py-5  flex flex-col gap-5 ">
+      <div className=" public-container flex justify-between items-center w-full ">
+        <div className="flex gap-2 items-center text-white ">
+          <h1 className=" text-4xl font-extrabold ">OYO</h1>
+          <p className="text-[1.4rem] font-bold">
+            World's leading chain of hotels and homes
+          </p>
         </div>
-        <div className="my-8">
-          <hr></hr>
+        <div className="flex items-center  gap-2">
+          <p className="text-[1.4rem] font-bold text-white">
+            Join our network and grow your business!
+          </p>
+          <p className=" bg-white rounded-md shadow-md py-4 px-5 flex items-center ">
+            <HiOutlineBuildingOffice2 className="text-2xl text-gray-400" />
+            <span className="px-2  text-xs font-bold text-gray-700">
+              List your property
+            </span>
+          </p>
         </div>
-        <div className="grid grid-flow-col gap-9 my-5">
-          <div className=" flex flex-col ">
-            <p className="text-white">Download OYO app for exciting offers.</p>
-            <div className="flex gap-4 my-4">
-              <div className="flex items-center w-52 border border-black rounded-md bg-white py-1">
+      </div>
+      <hr />
+      <section className="public-container flex flex-col gap-5 ">
+        <div className="grid grid-cols-3">
+          <div className=" flex flex-col gap-4 border-r">
+            <p className="text-white text-sm">
+              Download OYO app for exciting offers.
+            </p>
+            <div className="flex gap-4 ">
+              <div className="flex items-center border border-black rounded-md bg-white py-1 px-2 gap-2">
                 <img
                   src={appleStore}
                   alt="play store"
-                  className="w-14 text-white"
+                  className="w-6 h-7 text-white"
                 />
-                <div>
-                  <p className="font-semibold text-xs">Download on the </p>
-                  <p className="font-bold text-xl">Apple Store</p>
+                <div className="">
+                  <p className="font-semibold text-xs ">Download on the </p>
+                  <p className="font-bold text-xl">App Store</p>
                 </div>
               </div>
               <div className="flex">
-                <div className="flex items-center w-52 border border-black rounded-md bg-white py-1">
-                  <img src={playStore} alt="apple store" className="w-6 mx-2" />
+                <div className="flex items-center  border border-black rounded-md bg-white py-1 px-2">
+                  <img src={playStore} alt="App Store" className="w-6 mx-2" />
                   <div>
                     <p className="font-semibold text-xs">Get it on </p>
                     <p className="font-bold text-xl">Google Play</p>
@@ -183,128 +185,113 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="text-white font-thin">
-            <div className="flex gap-5 justify-around">
-              <div className="flex flex-col gap-4">
-                {list1.map((item) => (
-                  <div className="" key={item.name}>
-                    {item.name}
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-col gap-4">
-                {list2.map((item) => (
-                  <div className="" key={item.name}>
-                    {item.name}
-                  </div>
-                ))}
-              </div>
+          <div className="text-white text-sm  flex justify-around border-r">
+            <div className="flex flex-col gap-3">
+              {list1.map((item) => (
+                <div className="" key={item.name}>
+                  {item.name}
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col gap-3">
+              {list2.map((item) => (
+                <div className="" key={item.name}>
+                  {item.name}
+                </div>
+              ))}
             </div>
           </div>
-          <div className="text-white font-thin">
-            <div className="flex gap-5 justify-around">
-              <div className="flex flex-col gap-4">
-                {list3.map((item) => (
-                  <div className="" key={item.name}>
-                    {item.name}
-                  </div>
-                ))}
-              </div>
-              <div className="flex flex-col gap-4">
-                {list4.map((item) => (
-                  <div className="" key={item.name}>
-                    {item.name}
-                  </div>
-                ))}
-              </div>
+          <div className="text-white text-sm  flex justify-around ">
+            <div className="flex flex-col gap-3">
+              {list3.map((item) => (
+                <div className="" key={item.name}>
+                  {item.name}
+                </div>
+              ))}
+            </div>
+            <div className="flex flex-col gap-3">
+              {list4.map((item) => (
+                <div className="" key={item.name}>
+                  {item.name}
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
-        <hr></hr>
+        <hr />
 
-        <div>
-          <h2 className="my-4 px-5 font-bold text-xl text-white">OYO Hotels</h2>
-          <div className="grid grid-flow-col gap-5">
-            <div className="text-white font-thin">
-              <div className="flex gap-5 justify-around">
-                <div className="flex flex-col gap-4">
-                  {HotelList1.map((item) => (
-                    <div className="" key={item.name}>
-                      {item.name}
+        <div className="flex flex-col gap-4">
+          <h2 className=" font-bold text-xl text-white pl-4">OYO Hotels</h2>
+          <div className="grid grid-cols-6">
+            <div className="flex gap-5 justify-around text-white font-bold text-sm ">
+              <div className="flex flex-col gap-3">
+                {HotelList1.map((item) => (
+                  <div className="cursor-pointer" key={item.name}>
+                    <p className="hover:underline"> {item.name}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <div className="flex gap-5 justify-around text-white font-bold text-sm">
+                <div className="flex flex-col gap-3">
+                  {HotelList2.map((item) => (
+                    <div className="cursor-pointer" key={item.name}>
+                      <p className="hover:underline"> {item.name}</p>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
             <div>
-              <div className="text-white font-thin">
-                <div className="flex gap-5 justify-around">
-                  <div className="flex flex-col gap-4">
-                    {HotelList2.map((item) => (
-                      <div className="" key={item.name}>
-                        {item.name}
-                      </div>
-                    ))}
-                  </div>
+              <div className="flex gap-5 justify-around text-white font-bold text-sm">
+                <div className="flex flex-col gap-3">
+                  {HotelList3.map((item) => (
+                    <div className="cursor-pointer" key={item.name}>
+                      <p className="hover:underline"> {item.name}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
             <div>
-              <div className="text-white font-thin">
-                <div className="flex gap-5 justify-around">
-                  <div className="flex flex-col gap-4">
-                    {HotelList3.map((item) => (
-                      <div className="" key={item.name}>
-                        {item.name}
-                      </div>
-                    ))}
-                  </div>
+              <div className="flex gap-5 justify-around text-white font-bold text-sm">
+                <div className="flex flex-col gap-3">
+                  {HotelList4.map((item) => (
+                    <div className="cursor-pointer" key={item.name}>
+                      <p className="hover:underline"> {item.name}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
             <div>
-              <div className="text-white font-thin">
-                <div className="flex gap-5 justify-around">
-                  <div className="flex flex-col gap-4">
-                    {HotelList4.map((item) => (
-                      <div className="" key={item.name}>
-                        {item.name}
-                      </div>
-                    ))}
-                  </div>
+              <div className="flex gap-5 justify-around text-white font-bold text-sm">
+                <div className="flex flex-col gap-3">
+                  {HotelList5.map((item) => (
+                    <div className="cursor-pointer" key={item.name}>
+                      <p className="hover:underline"> {item.name}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
             <div>
-              <div className="text-white font-thin">
-                <div className="flex gap-5 justify-around">
-                  <div className="flex flex-col gap-4">
-                    {HotelList5.map((item) => (
-                      <div className="" key={item.name}>
-                        {item.name}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div>
-              <div className="text-white font-thin">
-                <div className="flex gap-5 justify-around">
-                  <div className="flex flex-col gap-4">
-                    {HotelList6.map((item) => (
-                      <div className="" key={item.name}>
-                        {item.name}
-                      </div>
-                    ))}
-                  </div>
+              <div className="flex gap-5 justify-around text-white font-bold text-sm">
+                <div className="flex flex-col gap-3">
+                  {HotelList6.map((item) => (
+                    <div className="cursor-pointer" key={item.name}>
+                      <p className="hover:underline"> {item.name}</p>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <hr className="my-8"></hr>
+        <hr className=""></hr>
         <div className=" flex justify-between items-center">
           <div className="flex gap-6 text-white text-2xl">
             <p>
