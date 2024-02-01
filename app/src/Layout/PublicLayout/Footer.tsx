@@ -156,7 +156,7 @@ const Footer = () => {
       </div>
       <hr />
       <section className="public-container flex flex-col gap-5 ">
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-3 ">
           <div className=" flex flex-col gap-4 border-r">
             <p className="text-white text-sm">
               Download OYO app for exciting offers.
