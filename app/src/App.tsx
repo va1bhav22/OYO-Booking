@@ -16,7 +16,7 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<IndexPage />} />
-              <Route path="/detail/:id" element={<Detail />} />
+              <Route path="/:id" element={<Detail />} />
               {newNavMenues?.map((menu) => (
                 <Route key={menu.id} path={menu.path} element={menu.element} />
               ))}
