@@ -1,6 +1,7 @@
 import React from "react";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { FaSortDown } from "react-icons/fa6";
+import { Switch } from "antd";
 
 const Header = () => {
   return (
@@ -18,7 +19,12 @@ const Header = () => {
         <div className="flex justify-between items-center  w-4/12 ">
           <div className=" flex items-center gap-6 ">
             <p className=" text-sm font-light">Map View</p>
-            <div className="border w-12">box</div>
+            <div className=" w-12">
+              <Switch
+                className="bg-red-200 border border-black"
+                defaultChecked
+              />
+            </div>
           </div>
           <div className="flex items-center gap-4">
             <p className="font-light">Sort By</p>
