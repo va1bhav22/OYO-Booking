@@ -15,6 +15,9 @@
   .public-container {
     @apply container mx-auto px-4 md:px-2 lg:px-5 2xl:px-6;
   }
+  .sidebar-container{
+    @apply container mx-auto px-1 md:px-2 lg:px-1 2xl:px-2;
+  }
   .public-g-padding {
     @apply lg:p-5 md:p-4 !p-3;
   }

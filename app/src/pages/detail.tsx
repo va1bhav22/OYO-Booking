@@ -4,11 +4,14 @@ import Header from "../components/hotelHeader/Header";
 
 import { LuBadgePercent } from "react-icons/lu";
 import Gallery from "../components/HotelGallery/Gallery";
+import SiderBar from "../components/HotelGallery/SiderBar";
 const Detail = () => {
   return (
     <PublicLayout title="">
       <div className="grid grid-cols-12 border  border-black">
-        <div className="col-span-3 p-2 border border-red-400">1</div>
+        <div className="col-span-3 p-2 border border-red-400">
+          <SiderBar />
+        </div>
         <div className="col-span-9  p-2 border border-green-400">
           <Header />
           <hr className="py-3"></hr>
