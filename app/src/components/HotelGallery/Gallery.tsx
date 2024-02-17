@@ -10,7 +10,7 @@ const Gallery = () => {
   return (
     <div>
       <div className="grid grid-cols-9">
-        <div className="col-span-3">1</div>
+        <div className="col-span-3">images</div>
         <div className="col-span-6">
           <div className="grid grid-rows-3">
             <div className="row-span-1">
