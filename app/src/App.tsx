@@ -6,6 +6,7 @@ import { Provider } from "react-redux";
 import { lazy } from "react";
 import store from "./Redux/store";
 import Detail from "./pages/detail";
+import Login from "./pages/login";
 const IndexPage = lazy(() => import("./pages"));
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             <Routes>
               <Route path="/" element={<IndexPage />} />
               <Route path="/:id" element={<Detail />} />
+              <Route path="/login" element={<Login />} />
               {newNavMenues?.map((menu) => (
                 <Route key={menu.id} path={menu.path} element={menu.element} />
               ))}
