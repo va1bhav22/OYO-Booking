@@ -7,24 +7,33 @@ import { lazy } from "react";
 import store from "./Redux/store";
 import Detail from "./pages/detail";
 import Login from "./pages/login";
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const IndexPage = lazy(() => import("./pages"));
 
+const queryClient = new QueryClient();
 function App() {
   return (
     <ErrorBoundary>
       <>
-        <Provider store={store}>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<IndexPage />} />
-              <Route path="/:id" element={<Detail />} />
-              <Route path="/login" element={<Login />} />
-              {newNavMenues?.map((menu) => (
-                <Route key={menu.id} path={menu.path} element={menu.element} />
-              ))}
-            </Routes>
-          </BrowserRouter>
-        </Provider>
+        <QueryClientProvider client={queryClient}>
+          <Provider store={store}>
+            <BrowserRouter>
+              <Routes>
+                <Route path="/" element={<IndexPage />} />
+                <Route path="/:id" element={<Detail />} />
+                <Route path="/login" element={<Login />} />
+                {newNavMenues?.map((menu) => (
+                  <Route
+                    key={menu.id}
+                    path={menu.path}
+                    element={menu.element}
+                  />
+                ))}
+              </Routes>
+            </BrowserRouter>
+          </Provider>
+        </QueryClientProvider>
       </>
     </ErrorBoundary>
   );

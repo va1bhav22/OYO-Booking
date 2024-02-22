@@ -1,12 +1,89 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { oyoLogin } from "../images";
 
+import { useNavigate } from "react-router-dom";
+
+import { useMutation } from "@tanstack/react-query";
 const Login = () => {
+  const [isLoggedIn, SetLogin] = useState<boolean>(false);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [user, setUser] = useState<Object>({});
+  const [error, setError] = useState<string>("");
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    SetLogin(!isLoggedIn);
+  };
+
+  const mutation = useMutation({
+    mutationFn: async ({
+      email,
+      password,
+    }: {
+      email: string;
+      password: string;
+    }) => {
+      const response = await fetch(
+        "http://localhost:3003/api/v1/user/sign-in",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
+
+      const loginData = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem("access_token", loginData.data.token);
+        SetLogin(true);
+      } else {
+        setError(loginData.message);
+      }
+      // Handle response data as needed
+      setUser(loginData.data);
+      setEmail("");
+      setPassword("");
+
+      return loginData;
+    },
+  });
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(email, password);
+    mutation.mutate({ email, password });
+  };
+
+  useEffect(() => {
+    const user = localStorage.getItem("access_token");
+    if (user) {
+      SetLogin(true);
+    } else {
+      SetLogin(false);
+    }
+  }, []);
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate("/");
+    } else {
+      navigate("/login");
+    }
+  }, [isLoggedIn, navigate]);
   return (
-    <div>
-      <h1>
-        <title>Oyo - Login !</title>
-      </h1>
-      <div className=" flex h-screen justify-center items-center relative bg-login-background bg-no-repeat bg-cover">
+    <div
+      className="min-h-screen w-full"
+      style={{
+        backgroundImage: `url('${oyoLogin}')`,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+      }}
+    >
+      <div className=" flex justify-center items-center relative bg-login-background bg-no-repeat bg-cover">
         <div className="absolute w-full top-10 px-20 flex  items-center">
           <h2 className="text-5xl font-bold mr-5 text-red-600 ">OYO</h2>
           <p className="font-bold text-xl text-white">
@@ -33,34 +110,49 @@ const Login = () => {
               <p className="text-lg font-bold mb-1">
                 Please enter your email to continue
               </p>
+              <form onSubmit={(e) => handleSubmit(e)}>
+                {isLoggedIn && (
+                  <input
+                    className="outline-none border-2 my-3 border-gray-200 w-96 px-2 py-2 rounded-md "
+                    type="text"
+                    placeholder="Enter your name..."
+                  />
+                )}
+                <input
+                  className="outline-none border-2 my-3 border-gray-200 w-96 px-2 py-2 rounded-md "
+                  type="email"
+                  placeholder="Enter your email..."
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                  }}
+                  value={email}
+                />
 
-              <input
-                className="outline-none border-2 my-3 border-gray-200 w-96 px-2 py-2 rounded-md "
-                type="text"
-                placeholder="Enter your name..."
-              />
-              <input
-                className="outline-none border-2 my-3 border-gray-200 w-96 px-2 py-2 rounded-md "
-                type="email"
-                placeholder="Enter your email..."
-              />
-              <input
-                className="outline-none border-2 my-3 border-gray-200 w-96 px-2 py-2 rounded-md "
-                type="password"
-                placeholder="Enter your password..."
-              />
-              <button
-                type="submit"
-                className=" rounded-sm w-96 h-14 text-lg font-bold bg-red-500 hover:cursor-pointer hover:bg-red-600 text-white my-5"
-              >
-                SignUp
-              </button>
+                <input
+                  className="outline-none border-2 my-3 border-gray-200 w-96 px-2 py-2 rounded-md "
+                  type="password"
+                  placeholder="Enter your password..."
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                />
+
+                <button
+                  type="submit"
+                  className=" rounded-sm w-96 h-14 text-lg font-bold bg-red-500 hover:cursor-pointer hover:bg-red-600 text-white my-5"
+                >
+                  {isLoggedIn ? "SignUp" : "Login"}
+                </button>
+              </form>
               <p className="my-1 text-xl">
                 <span>Already have an account ?</span>
-                <span className="ml-1 border-b-2 border-red-500 pb-1 text-red-500 hover:cursor-pointer">
-                  Login
+                <span
+                  className="ml-1 border-b-2 border-red-500 pb-1 text-red-500 hover:cursor-pointer"
+                  onClick={handleClick}
+                >
+                  {isLoggedIn ? "Login" : "Sign Up"}
                 </span>
               </p>
+              {error && <div>An error occurred: {error}</div>}
             </div>
           </div>
         </div>
