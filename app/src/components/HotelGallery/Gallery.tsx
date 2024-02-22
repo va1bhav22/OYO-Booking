@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
 import { FaMapMarkerAlt } from "react-icons/fa";
@@ -6,7 +7,20 @@ import { FaStar } from "react-icons/fa";
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { IoCarSportOutline } from "react-icons/io5";
 
+const fetchHotel = async () => {
+  const response = await fetch("http://localhost:3003/api/v1/hotel/get-hotels");
+  const data = await response.json();
+  console.log(data);
+  return data;
+};
+
 const Gallery = () => {
+  const { isLoading, data, error } = useQuery({
+    queryKey: ["Hotels"],
+    queryFn: fetchHotel,
+  });
+  if (isLoading) return <div>isLoading</div>;
+  if (error) return <div>{error.message}</div>;
   return (
     <div>
       <div className="grid grid-cols-9">

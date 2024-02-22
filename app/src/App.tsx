@@ -11,7 +11,14 @@ import Login from "./pages/login";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const IndexPage = lazy(() => import("./pages"));
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 10,
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 function App() {
   return (
     <ErrorBoundary>
