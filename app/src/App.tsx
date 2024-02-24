@@ -7,14 +7,16 @@ import { lazy } from "react";
 import store from "./Redux/store";
 import Detail from "./pages/detail";
 import Login from "./pages/login";
-
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Product from "./pages/product";
+import Payment from "./pages/payment";
 const IndexPage = lazy(() => import("./pages"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 10,
+      staleTime: 5,
       refetchOnWindowFocus: false,
     },
   },
@@ -30,6 +32,8 @@ function App() {
                 <Route path="/" element={<IndexPage />} />
                 <Route path="/:id" element={<Detail />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/payment" element={<Product />} />
+                <Route path="/payment-success" element={<Payment />} />
                 {newNavMenues?.map((menu) => (
                   <Route
                     key={menu.id}
@@ -40,6 +44,7 @@ function App() {
               </Routes>
             </BrowserRouter>
           </Provider>
+          <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </>
     </ErrorBoundary>

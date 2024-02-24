@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
 import { FaMapMarkerAlt } from "react-icons/fa";
@@ -6,39 +5,48 @@ import { FaFire } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
 import { IoCarSportOutline } from "react-icons/io5";
+import { hotel1, hotel2, hotel3, hotel4 } from "../../images";
 
-const fetchHotel = async () => {
-  const response = await fetch("http://localhost:3003/api/v1/hotel/get-hotels");
-  const data = await response.json();
-  console.log(data);
-  return data;
-};
+interface gallery {
+  isLoading: boolean;
+  error: any;
+  item: any;
+}
 
-const Gallery = () => {
-  const { isLoading, data, error } = useQuery({
-    queryKey: ["Hotels"],
-    queryFn: fetchHotel,
-  });
-  if (isLoading) return <div>isLoading</div>;
+const Gallery = ({ isLoading, error, item }: gallery) => {
+  if (isLoading) return <div>Loading</div>;
+
   if (error) return <div>{error.message}</div>;
   return (
     <div>
-      <div className="grid grid-cols-9">
-        <div className="col-span-3">images</div>
+      <div className="grid grid-cols-9 gap-3">
+        <div className="col-span-3 flex justify-center items-center gap-1">
+          <div>
+            <img src={hotel1} alt="room" className="w-full " />
+          </div>
+          <div className="flex flex-col items-center gap-1">
+            <div>
+              <img src={hotel2} alt="room1" className="w-96" />
+            </div>
+            <div>
+              <img src={hotel3} alt="room2" className="w-96" />
+            </div>
+            <div>
+              <img src={hotel4} alt="room3" className="w-96" />
+            </div>
+            <div>
+              <img src={hotel3} alt="room2" className="w-96" />
+            </div>
+          </div>
+        </div>
         <div className="col-span-6">
           <div className="grid grid-rows-3">
             <div className="row-span-1">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="font-semibold text-xl">
-                    Super OYO Mn Residency Near Ragigudda Sri Prasanna
-                    Anjaneyaswamy Temple
-                  </p>
+                  <p className="font-semibold text-xl">{item.name}</p>
                   <div className="flex items-center gap-2">
-                    <p>
-                      Madiwala, South Zone, Bangalore South, Bangalore Urban,
-                      560034, Bangalore
-                    </p>
+                    <p>{item.address}</p>
                     <p>
                       <FaMapMarkerAlt className="text-red-500" />
                     </p>

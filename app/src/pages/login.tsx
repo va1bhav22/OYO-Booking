@@ -55,7 +55,7 @@ const Login = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(email, password);
+
     mutation.mutate({ email, password });
   };
 
